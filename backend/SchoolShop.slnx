@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SchoolShop.Api/SchoolShop.Api.csproj" />
+    <Project Path="src/SchoolShop.Application/SchoolShop.Application.csproj" />
+    <Project Path="src/SchoolShop.Domain/SchoolShop.Domain.csproj" />
+    <Project Path="src/SchoolShop.Infrastructure/SchoolShop.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SchoolShop.Tests/SchoolShop.Tests.csproj" />
+  </Folder>
+</Solution>

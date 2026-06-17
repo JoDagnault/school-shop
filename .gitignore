@@ -3,5 +3,8 @@ bin/
 obj/
 *.user
 
+appsettings*.json
+!appsettings.example.json
+
 node_modules/
 dist/

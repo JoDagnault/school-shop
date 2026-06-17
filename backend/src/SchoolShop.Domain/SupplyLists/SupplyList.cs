@@ -19,7 +19,7 @@ public class SupplyList
         _key = key;
 
         _items = new Dictionary<SupplyListItemName, SupplyListItemQuantity>();
-        
+
         foreach (var supplyListItem in items)
         {
             if (!_items.TryAdd(supplyListItem.Name, supplyListItem.Quantity))

@@ -19,11 +19,11 @@ public sealed class SupplyListEntityConfiguration : IEntityTypeConfiguration<Sup
             .IsRequired();
 
         builder.HasIndex(supplyList => new
-            {
-                supplyList.SchoolName,
-                supplyList.Grade,
-                supplyList.AcademicYearStart
-            })
+        {
+            supplyList.SchoolName,
+            supplyList.Grade,
+            supplyList.AcademicYearStart
+        })
             .IsUnique();
 
         builder.HasMany(supplyList => supplyList.Items)

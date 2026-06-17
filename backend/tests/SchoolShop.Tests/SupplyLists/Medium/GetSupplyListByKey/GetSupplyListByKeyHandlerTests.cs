@@ -21,7 +21,7 @@ public class GetSupplyListByKeyHandlerTests
         var repository = new InMemorySupplyListRepository(expectedSupplyList, SupplyListFixture.AnotherSupplyList());
         var handler = new GetSupplyListByKeyHandler(repository);
         var query = new GetSupplyListByKeyQuery(expectedSupplyList.Key);
-        
+
         var result = await handler.Handle(query, CancellationToken.None);
 
         result.Items.ShouldBe([

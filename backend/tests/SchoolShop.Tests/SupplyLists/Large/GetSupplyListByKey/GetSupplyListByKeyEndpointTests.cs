@@ -55,7 +55,7 @@ public class GetSupplyListByKeyEndpointTests : IAsyncLifetime
         var school = Uri.EscapeDataString(key.School.Name);
         var grade = Uri.EscapeDataString(key.Grade.Value);
         var academicYear = key.AcademicYear.StartYear;
-        
+
         return $"/supply-lists?school={school}&grade={grade}&academicYear={academicYear}";
     }
 

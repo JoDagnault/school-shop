@@ -1,6 +1,7 @@
+using Microsoft.EntityFrameworkCore;
 using SchoolShop.Api.Errors;
-using SchoolShop.Application;
 using SchoolShop.Api.SupplyLists;
+using SchoolShop.Application;
 using SchoolShop.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,10 @@ builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
+
+await using var scope = app.Services.CreateAsyncScope();
+var dbContext = scope.ServiceProvider.GetRequiredService<SchoolShopDbContext>();
+await dbContext.Database.MigrateAsync();
 
 if (app.Environment.IsDevelopment())
 {

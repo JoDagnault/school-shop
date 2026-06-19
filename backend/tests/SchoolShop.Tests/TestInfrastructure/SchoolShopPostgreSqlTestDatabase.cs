@@ -28,7 +28,7 @@ public sealed class SchoolShopPostgreSqlTestDatabase : IAsyncDisposable
         await _postgres.StartAsync();
 
         await using var dbContext = CreateDbContext();
-        await dbContext.Database.EnsureCreatedAsync();
+        await dbContext.Database.MigrateAsync();
     }
 
     public SchoolShopDbContext CreateDbContext()

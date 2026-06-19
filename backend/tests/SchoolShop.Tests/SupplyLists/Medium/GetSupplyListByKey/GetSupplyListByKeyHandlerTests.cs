@@ -1,4 +1,4 @@
-using SchoolShop.Application.Common.Exceptions;
+using SchoolShop.Application.Exceptions;
 using SchoolShop.Application.SupplyLists.GetSupplyListByKey;
 using SchoolShop.Domain.SupplyLists.Items;
 using SchoolShop.Tests.SupplyLists.Builders;

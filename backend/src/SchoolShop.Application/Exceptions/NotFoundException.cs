@@ -1,3 +1,3 @@
-namespace SchoolShop.Application.Common.Exceptions;
+namespace SchoolShop.Application.Exceptions;
 
 public sealed class NotFoundException(string message) : Exception(message);

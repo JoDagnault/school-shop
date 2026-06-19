@@ -1,5 +1,5 @@
 using MediatR;
-using SchoolShop.Application.Common.Exceptions;
+using SchoolShop.Application.Exceptions;
 
 namespace SchoolShop.Application.SupplyLists.GetSupplyListByKey;
 

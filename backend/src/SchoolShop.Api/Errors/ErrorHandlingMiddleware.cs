@@ -1,4 +1,4 @@
-using SchoolShop.Application.Common.Exceptions;
+using SchoolShop.Application.Exceptions;
 
 namespace SchoolShop.Api.Errors;
 

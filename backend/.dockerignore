@@ -1,0 +1,9 @@
+bin/
+obj/
+**/bin/
+**/obj/
+.idea/
+*.user
+**/appsettings*.json
+tests/
+src/SchoolShop.Api/Properties/launchSettings.json

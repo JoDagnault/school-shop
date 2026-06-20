@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
 using SchoolShop.Api.Errors;
 using SchoolShop.Api.SupplyLists;
@@ -7,6 +8,11 @@ using SchoolShop.Infrastructure;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
+builder.Services.ConfigureHttpJsonOptions(options =>
+{
+    // Keep generated numeric schemas compatible with Swagger UI. See docs/adr/0001-strict-json-number-handling.md.
+    options.SerializerOptions.NumberHandling = JsonNumberHandling.Strict;
+});
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
@@ -19,6 +25,10 @@ await dbContext.Database.MigrateAsync();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/openapi/v1.json", "School Shop API");
+    });
 }
 
 app.UseErrorHandling();

@@ -7,12 +7,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.8"/>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.8" />
+        <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.2.2" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\SchoolShop.Application\SchoolShop.Application.csproj"/>
-        <ProjectReference Include="..\SchoolShop.Infrastructure\SchoolShop.Infrastructure.csproj"/>
+        <ProjectReference Include="..\SchoolShop.Application\SchoolShop.Application.csproj" />
+        <ProjectReference Include="..\SchoolShop.Infrastructure\SchoolShop.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

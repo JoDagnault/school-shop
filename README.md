@@ -9,7 +9,8 @@ docker compose up --build
 ## Access Locally
 
 - API: http://localhost:8080
-- OpenAPI document: http://localhost:8080/openapi/v1.json
+- Swagger UI: http://localhost:8080/swagger
+- OpenAPI JSON: http://localhost:8080/openapi/v1.json
 - PostgreSQL: `localhost:5432`
   - Database: `school_shop`
   - Username: `school_shop`

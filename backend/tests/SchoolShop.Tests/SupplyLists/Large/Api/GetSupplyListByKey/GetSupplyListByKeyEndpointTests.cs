@@ -1,5 +1,7 @@
 using System.Net;
 using System.Net.Http.Json;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using SchoolShop.Api.SupplyLists.GetSupplyListByKey;
 using SchoolShop.Domain.SupplyLists.Key;
 using SchoolShop.Tests.SupplyLists.Testing.Builders;
@@ -49,6 +51,22 @@ public class GetSupplyListByKeyEndpointTests : IAsyncLifetime
         var response = await Client.GetAsync(GetSupplyListByKeyUriFor(missingSupplyListKey));
 
         response.StatusCode.ShouldBe(HttpStatusCode.NotFound);
+    }
+
+    [Theory]
+    [InlineData("/supply-lists?grade=1&AcademicYear=2026", "School")]
+    [InlineData("/supply-lists?school=Riverside&AcademicYear=2026", "Grade")]
+    [InlineData("/supply-lists?school=Riverside&grade=1", "AcademicYear")]
+    public async Task GivenMissingParameter_WhenCallingGetSupplyListByKeyEndpoint_ShouldReturnValidationProblem(
+        string uri,
+        string expectedErrorKey)
+    {
+        var response = await Client.GetAsync(uri);
+
+        response.StatusCode.ShouldBe(HttpStatusCode.BadRequest);
+        var problem = await response.Content.ReadFromJsonAsync<HttpValidationProblemDetails>();
+        problem.ShouldNotBeNull();
+        problem.Errors.ShouldContainKey(expectedErrorKey);
     }
 
     private static string GetSupplyListByKeyUriFor(SupplyListKey key)

@@ -8,11 +8,17 @@ using SchoolShop.Infrastructure;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
+
+builder.Services.AddValidation();
+builder.Services.AddProblemDetails();
+builder.Services.AddExceptionHandler<ApiExceptionHandler>();
+
 builder.Services.ConfigureHttpJsonOptions(options =>
 {
     // Keep generated numeric schemas compatible with Swagger UI. See docs/adr/0001-strict-json-number-handling.md.
     options.SerializerOptions.NumberHandling = JsonNumberHandling.Strict;
 });
+
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
@@ -31,7 +37,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.UseErrorHandling();
+app.UseExceptionHandler();
 
 app.MapSupplyListsEndpoints();
 

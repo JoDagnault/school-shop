@@ -23,4 +23,12 @@ public class AcademicYearTests
 
         Should.Throw<ArgumentOutOfRangeException>(Act);
     }
+
+    [Fact]
+    public void GivenANegativeStartYear_WhenCreating_ShouldThrowArgumentOutOfRangeException()
+    {
+        AcademicYear Act() => new AcademicYear(-1);
+
+        Should.Throw<ArgumentOutOfRangeException>(Act);
+    }
 }

@@ -1,20 +1,29 @@
+using System.ComponentModel.DataAnnotations;
+using SchoolShop.Application.SupplyLists;
 using SchoolShop.Domain.SupplyLists.Key;
 
 namespace SchoolShop.Api.SupplyLists.GetSupplyListByKey;
 
 public sealed class GetSupplyListByKeyRequest
 {
-    public string School { get; set; } = string.Empty;
+    [Required]
+    public string? School { get; init; }
 
-    public string Grade { get; set; } = string.Empty;
+    [Required]
+    public string? Grade { get; init; }
 
-    public uint AcademicYear { get; set; }
+    [Required]
+    [Range(
+        AcademicYearValidationPolicy.MinimumSupportedStartYear,
+        AcademicYearValidationPolicy.MaximumSupportedStartYear,
+        ErrorMessage = AcademicYearValidationPolicy.SupportedStartYearRangeErrorMessage)]
+    public int? AcademicYear { get; init; }
 
-    public SupplyListKey ToKey()
+    internal SupplyListKey ToKey()
     {
         return new SupplyListKey(
-            new School(School),
-            new Grade(Grade),
-            new AcademicYear(AcademicYear));
+            new School(School!),
+            new Grade(Grade!),
+            new AcademicYear(AcademicYear!.Value));
     }
 }

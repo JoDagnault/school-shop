@@ -2,7 +2,7 @@ services:
   api:
     build: ./backend
     environment:
-      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_ENVIRONMENT: Production
       ConnectionStrings__SchoolShop: Host=db;Port=5432;Database=school_shop;Username=school_shop;Password=school_shop
     ports:
       - "8080:8080"

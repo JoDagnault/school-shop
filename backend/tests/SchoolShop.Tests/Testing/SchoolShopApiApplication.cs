@@ -15,6 +15,8 @@ public sealed class SchoolShopApiApplication : WebApplicationFactory<Program>
 
     protected override IHost CreateHost(IHostBuilder builder)
     {
+        builder.UseEnvironment(Environments.Production);
+
         builder.ConfigureHostConfiguration(configuration =>
         {
             configuration.AddInMemoryCollection(new Dictionary<string, string?>
